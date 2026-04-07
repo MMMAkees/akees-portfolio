@@ -39,7 +39,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans">
+      <body className="font-sans overflow-x-hidden w-full relative">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <AkeeBot />

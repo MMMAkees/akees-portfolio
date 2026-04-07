@@ -9,11 +9,12 @@ export default function SkillsMarquee() {
   );
 
   // Deduplicate icons programmatically (since text is hidden, duplicate icons look like bugs)
-  const seenIcons = new Set();
+  const seenSkills = new Set();
   const techSkills = techSkillsRaw.filter((skill) => {
-    const iconName = skill.icon.name;
-    if (seenIcons.has(iconName)) return false;
-    seenIcons.add(iconName);
+    if (!skill || !skill.icon) return false;
+    const identifier = skill.name;
+    if (seenSkills.has(identifier)) return false;
+    seenSkills.add(identifier);
     return true;
   });
 

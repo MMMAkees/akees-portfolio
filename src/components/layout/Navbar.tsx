@@ -110,41 +110,73 @@ export default function Navbar() {
 
             {/* Right side */}
             <div className="flex items-center gap-2">
-              {/* Theme Toggle - Smoother Telegram style */}
+              {/* Theme Toggle - Telegram style */}
               {mounted && (
                 <motion.button
                   onClick={toggleTheme}
-                  className="relative p-2 rounded-xl text-dark-600 dark:text-yellow-400 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors focus:outline-none"
-                  whileTap={{ scale: 0.9 }}
+                  className="relative p-2 rounded-xl text-yellow-500 dark:text-slate-200 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors focus:outline-none"
                   aria-label="Toggle theme"
+                  whileTap={{ scale: 0.9 }}
                 >
-                  <div className="relative w-6 h-6 flex items-center justify-center overflow-hidden">
-                    <AnimatePresence mode="wait">
-                      {isDark ? (
-                        <motion.div
-                          key="moon"
-                          initial={{ scale: 0.5, rotate: -90, opacity: 0 }}
-                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                          exit={{ scale: 0.5, rotate: 90, opacity: 0 }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute inset-0 flex items-center justify-center"
-                        >
-                          <BsMoonStarsFill className="w-5 h-5 text-yellow-400 drop-shadow-sm" />
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key="sun"
-                          initial={{ scale: 0.5, rotate: 90, opacity: 0 }}
-                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
-                          exit={{ scale: 0.5, rotate: -90, opacity: 0 }}
-                          transition={{ duration: 0.2, ease: "easeOut" }}
-                          className="absolute inset-0 flex items-center justify-center"
-                        >
-                          <BsSunFill className="w-5 h-5 text-orange-400 drop-shadow-sm" />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
+                  <motion.svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    animate={{
+                      rotate: isDark ? -90 : 0,
+                    }}
+                    transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                  >
+                    <mask id="theme-mask">
+                      <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                      <motion.circle
+                        r="9"
+                        fill="black"
+                        initial={false}
+                        animate={{
+                          cx: isDark ? 17 : 25,
+                          cy: isDark ? 7 : -5,
+                        }}
+                        transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                      />
+                    </mask>
+                    <motion.circle
+                      cx="12"
+                      cy="12"
+                      fill="currentColor"
+                      mask="url(#theme-mask)"
+                      initial={false}
+                      animate={{
+                        r: isDark ? 9 : 5,
+                      }}
+                      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                    />
+                    <motion.g
+                      stroke="currentColor"
+                      initial={false}
+                      animate={{
+                        opacity: isDark ? 0 : 1,
+                        scale: isDark ? 0.5 : 1,
+                      }}
+                      style={{ transformOrigin: "center" }}
+                      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+                    >
+                      <line x1="12" y1="1" x2="12" y2="3" />
+                      <line x1="12" y1="21" x2="12" y2="23" />
+                      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                      <line x1="1" y1="12" x2="3" y2="12" />
+                      <line x1="21" y1="12" x2="23" y2="12" />
+                      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </motion.g>
+                  </motion.svg>
                 </motion.button>
               )}
 

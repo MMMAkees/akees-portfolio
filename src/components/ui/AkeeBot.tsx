@@ -16,10 +16,15 @@ export default function AkeeBot() {
   const [messages, setMessages] = useState<Message[]>([
     { 
       id: "1", 
-      text: "Hi there! I'm Akee Bot 🤖. I'm Mohamed Akees' virtual assistant. How can I help you?", 
+      text: "Hi there! 👋 I'm Mohamed Akees' AI assistant.\n\nAsk me about him — skills, projects, education, experience — or ask programming questions!\n\nType **help** to see all topics. 💡", 
       sender: "bot" 
     }
   ]);
+  const suggestions = [
+    "Who is Akees?", "Skills", "Projects", 
+    "Education", "Experience", "Certificates", 
+    "Contact Info"
+  ];
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -40,18 +45,16 @@ export default function AkeeBot() {
     });
   };
 
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isTyping) return;
+  const sendQuery = (queryText: string) => {
+    if (!queryText.trim() || isTyping) return;
 
-    const userMsg: Message = { id: Date.now().toString(), text: input, sender: "user" };
+    const userMsg: Message = { id: Date.now().toString(), text: queryText, sender: "user" };
     setMessages(prev => [...prev, userMsg]);
-    setInput("");
     setIsTyping(true);
 
     // Simulated Pro Bot AI
     setTimeout(() => {
-      const lowerInput = userMsg.text.toLowerCase();
+      const lowerInput = queryText.toLowerCase();
       let botReply = "I'm not exactly sure how to answer that just yet! Try asking me specifically about Akees' **skills**, **projects**, **experience**, or **contact info**.";
       
       const responses = {
@@ -110,8 +113,12 @@ export default function AkeeBot() {
         botReply = responses.education[Math.floor(Math.random() * responses.education.length)];
       } else if (match(["data", "analytic", "power bi", "excel", "insight"])) {
         botReply = responses.analytics[0];
-      } else if (match(["who is ake", "about ake", "who are you akees", "who is he", "about him", "tell me about akees", "who is mohamed"])) {
+      } else if (match(["who is ake", "about ake", "who are you ake", "who is he", "about him", "tell me about ake", "who is mohamed"])) {
         botReply = responses.about[Math.floor(Math.random() * responses.about.length)];
+      } else if (match(["certific"])) {
+        botReply = "Akees holds a **Certificate in Information Technology and English** from BCAS Campus (2022).";
+      } else if (match(["help", "topic"])) {
+        botReply = "Here are the topics I can help you with:\n1. **Skills & Tech Stack**\n2. **Projects**\n3. **Work Experience**\n4. **Education & Certificates**\n5. **Contact Info**\nJust click one of the suggested buttons or type your question!";
       } else if (match(["hi", "hello", "hey", "greetings"])) {
         botReply = responses.greeting[Math.floor(Math.random() * responses.greeting.length)];
       } else if (match(["thank", "thx"])) {
@@ -125,11 +132,18 @@ export default function AkeeBot() {
     }, 1000 + Math.random() * 1500); // 1-2.5 second realistic delay
   };
 
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    sendQuery(input);
+    setInput("");
+  };
+
   return (
     <motion.div
       drag
       dragMomentum={false}
-      className="fixed bottom-6 right-6 z-50 cursor-grab active:cursor-grabbing flex flex-col items-end pointer-events-auto"
+      className="fixed bottom-[100px] right-6 z-50 cursor-grab active:cursor-grabbing flex flex-col items-end pointer-events-auto"
       initial={{ y: 100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 260, damping: 20, delay: 1 }}
@@ -178,15 +192,33 @@ export default function AkeeBot() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   key={msg.id} 
-                  className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+                  className="flex flex-col"
                 >
-                  <div className={`max-w-[85%] rounded-2xl p-3 text-sm shadow-sm leading-relaxed ${
-                    msg.sender === "user" 
-                      ? "bg-primary-500 text-white rounded-tr-sm" 
-                      : "glass border border-dark-100 dark:border-dark-700 text-dark-800 dark:text-dark-200 rounded-tl-sm"
-                  }`}>
-                    {msg.sender === "bot" ? renderMessage(msg.text) : msg.text}
+                  <div className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
+                    <div className={`max-w-[85%] rounded-2xl p-3 text-sm shadow-sm leading-relaxed whitespace-pre-wrap ${
+                      msg.sender === "user" 
+                        ? "bg-primary-500 text-white rounded-tr-sm" 
+                        : "glass border border-dark-100 dark:border-dark-700 text-dark-800 dark:text-dark-200 rounded-tl-sm"
+                    }`}>
+                      {msg.sender === "bot" ? renderMessage(msg.text) : msg.text}
+                    </div>
                   </div>
+                  
+                  {/* Suggestion Chips purely for the initial welcome message */}
+                  {msg.id === "1" && (
+                    <div className="flex flex-wrap gap-2 mt-3 pl-1">
+                      {suggestions.map((suggestion, idx) => (
+                        <button
+                          key={idx}
+                          onClick={() => sendQuery(suggestion)}
+                          disabled={isTyping}
+                          className="px-3 py-1.5 rounded-full text-xs font-medium border border-primary-500/30 text-primary-600 dark:text-primary-400 bg-primary-500/10 hover:bg-primary-500 hover:text-white dark:hover:text-white transition-all duration-300 disabled:opacity-50 cursor-pointer"
+                        >
+                          {suggestion}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
               {isTyping && (

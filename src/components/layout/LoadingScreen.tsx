@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function LoadingScreen() {
   const [loading, setLoading] = useState(true);
@@ -21,7 +22,7 @@ export default function LoadingScreen() {
           className="fixed inset-0 z-[100] flex items-center justify-center bg-white dark:bg-dark-950"
         >
           <div className="flex flex-col items-center gap-6">
-            {/* AK Monogram */}
+            {/* Logo */}
             <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
@@ -33,10 +34,15 @@ export default function LoadingScreen() {
               }}
               className="relative"
             >
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center shadow-xl shadow-primary-500/30">
-                <span className="text-3xl font-heading font-bold text-white">
-                  AK
-                </span>
+              <div className="w-24 h-24 rounded-2xl flex items-center justify-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="Mohamed Akees Logo"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 object-contain"
+                  priority
+                />
               </div>
               <motion.div
                 animate={{ rotate: 360 }}

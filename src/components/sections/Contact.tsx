@@ -66,11 +66,11 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-heading font-bold text-dark-900 dark:text-white mb-3">
-              Let&apos;s Connect 🚀
+              Let&apos;s Connect
             </h3>
             <p className="text-dark-400 dark:text-dark-500 mb-8 leading-relaxed">
-              I&apos;m currently open to internship opportunities and junior
-              developer positions. Whether you have a question or just want to
+              I&apos;m currently open to internship opportunities and full-stack
+              developer roles. Whether you have a question or just want to
               say hi — I&apos;d love to hear from you!
             </p>
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { EDUCATION, LANGUAGES } from "@/data/constants";
-import { HiAcademicCap, HiBookOpen, HiGlobe } from "react-icons/hi";
+import { HiAcademicCap, HiBookOpen, HiGlobe, HiCalendar } from "react-icons/hi";
 
 const iconMap: Record<string, React.ReactNode> = {
   graduation: <HiAcademicCap className="w-6 h-6" />,
@@ -40,8 +40,8 @@ export default function Education() {
                   <p className="text-sm text-primary-600 dark:text-primary-400 font-medium mb-1">
                     {edu.institution}
                   </p>
-                  <p className="text-xs text-dark-400 dark:text-dark-500 font-medium">
-                    📅 {edu.period}
+                  <p className="text-xs text-dark-400 dark:text-dark-500 font-medium flex items-center gap-1">
+                    <HiCalendar className="w-3.5 h-3.5" /> {edu.period}
                   </p>
                 </div>
               </motion.div>

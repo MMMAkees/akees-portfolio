@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Mohamed Akees | Full-Stack Developer & Data Analytics Enthusiast",
   description:
-    "Portfolio of Mohamed Akees — Junior Full-Stack Developer specializing in MERN stack and Data Analytics. Building modern web apps and turning data into insights.",
+    "Portfolio of Mohamed Akees — Full-Stack Developer specializing in MERN stack and Data Analytics. Building modern web apps and turning data into insights.",
   keywords: [
     "Mohamed Akees",
     "Full-Stack Developer",
@@ -23,6 +23,11 @@ export const metadata: Metadata = {
       "Building Modern Web Apps & Turning Data into Insights",
     type: "website",
     locale: "en_US",
+  },
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
   },
 };
 

@@ -56,6 +56,7 @@ const config: Config = {
         blob: "blob 7s infinite",
         shimmer: "shimmer 2s linear infinite",
         "gradient-x": "gradientX 3s ease infinite",
+        "marquee": "marquee 35s linear infinite",
       },
       keyframes: {
         fadeIn: {
@@ -91,6 +92,10 @@ const config: Config = {
         gradientX: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
       backdropBlur: {

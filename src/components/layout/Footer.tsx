@@ -3,6 +3,7 @@
 import { PERSONAL } from "@/data/constants";
 import { FaGithub, FaLinkedinIn, FaEnvelope, FaHeart } from "react-icons/fa";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -30,17 +31,26 @@ export default function Footer() {
       <div className="container-custom py-12">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & copyright */}
-          <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="flex flex-col items-center md:items-start gap-4">
             <motion.a
               href="#home"
-              className="text-2xl font-heading font-bold gradient-text"
+              className="flex items-center gap-3"
               whileHover={{ scale: 1.05 }}
             >
-              AK
+              <Image
+                src="/images/logo.png"
+                alt="Mohamed Akees Logo"
+                width={100}
+                height={100}
+                className="w-20 h-20 object-contain"
+              />
+              <span className="text-xl font-heading font-bold text-dark-900 dark:text-white">
+                Mohamed Akees
+              </span>
             </motion.a>
             <p className="text-sm text-dark-500 dark:text-dark-400 flex items-center gap-1">
-              © {currentYear} Mohamed Akees. Built with{" "}
-              <FaHeart className="text-red-500 text-xs" /> using Next.js
+              &copy; {currentYear} Mohamed Akees. Built with{" "}
+              <FaHeart className="text-red-600 text-s" /> using Next.js.
             </p>
           </div>
 

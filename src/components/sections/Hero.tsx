@@ -46,10 +46,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6"
+              className="flex w-fit mx-auto lg:mx-0 items-center justify-center gap-2 px-4 sm:px-5 py-2 rounded-full glass mb-6 whitespace-nowrap"
             >
-              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-              <span className="text-sm font-medium text-dark-600 dark:text-dark-300">
+              <span className="w-2 h-2 flex-shrink-0 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-xs sm:text-sm font-medium text-dark-600 dark:text-dark-300">
                 Available for opportunities
               </span>
             </motion.div>
@@ -74,9 +74,11 @@ export default function Hero() {
             >
               <TypeAnimation
                 sequence={[
-                  "Junior Full-Stack Developer",
+                  "Full-Stack Developer",
                   2000,
                   "Data Analytics Enthusiast",
+                  2000,
+                  "Digital Transformation Enthusiast",
                   2000,
                   "MERN Stack Developer",
                   2000,
@@ -153,66 +155,21 @@ export default function Hero() {
               <div className="absolute -inset-4 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full opacity-20 blur-2xl animate-pulse-glow" />
 
               {/* Image container */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white/20 dark:border-dark-700/30 shadow-2xl">
+              <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/20 dark:border-dark-700/30 shadow-2xl mx-auto bg-white dark:bg-transparent">
                 <Image
                   src="/images/profile.jpg"
                   alt="Mohamed Akees"
                   fill
-                  className="object-cover"
+                  className="object-cover object-[center_10%]"
                   priority
-                  sizes="(max-width: 768px) 288px, (max-width: 1024px) 320px, 384px"
+                  sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 />
               </div>
 
-              {/* Decorative elements */}
-              <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl rotate-12 opacity-80 flex items-center justify-center shadow-lg"
-              >
-                <span className="text-white font-bold text-xs text-center leading-tight">
-                  MERN<br />Stack
-                </span>
-              </motion.div>
-
-              <motion.div
-                animate={{ y: [10, -10, 10] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-2 -left-6 px-4 py-2 glass rounded-xl shadow-lg"
-              >
-                <span className="text-sm font-semibold text-dark-700 dark:text-dark-200">
-                  📊 Data Analytics
-                </span>
-              </motion.div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2"
-        >
-          <span className="text-xs text-dark-400 dark:text-dark-500 uppercase tracking-widest">
-            Scroll
-          </span>
-          <div className="w-6 h-10 border-2 border-dark-300 dark:border-dark-600 rounded-full flex justify-center">
-            <motion.div
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 mt-2 rounded-full bg-primary-500"
-            />
-          </div>
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

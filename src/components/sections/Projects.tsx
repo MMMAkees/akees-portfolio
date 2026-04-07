@@ -6,15 +6,18 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import FilterTabs from "@/components/ui/FilterTabs";
 import { PROJECTS, ProjectFilter } from "@/data/constants";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { HiCheckCircle } from "react-icons/hi";
+import { HiCheckCircle, HiChartBar, HiGlobeAlt } from "react-icons/hi";
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const filtered =
     activeFilter === "All"
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === activeFilter);
+
+  const displayedProjects = showAll ? filtered : filtered.slice(0, 4);
 
   return (
     <section id="projects" className="section-padding relative">
@@ -22,9 +25,12 @@ export default function Projects() {
         <SectionHeading title="Projects" subtitle="My Work" />
 
         <FilterTabs
-          tabs={["All", "Web", "Data"]}
+          tabs={["All", "Web", "Data", "Software"]}
           activeTab={activeFilter}
-          onTabChange={(tab) => setActiveFilter(tab as ProjectFilter | "All")}
+          onTabChange={(tab) => {
+            setActiveFilter(tab as ProjectFilter | "All");
+            setShowAll(false);
+          }}
         />
 
         <motion.div
@@ -32,7 +38,7 @@ export default function Projects() {
           className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, index) => (
+            {displayedProjects.map((project, index) => (
               <motion.div
                 layout
                 key={project.title}
@@ -42,33 +48,18 @@ export default function Projects() {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div className="glass rounded-2xl overflow-hidden group card-hover h-full flex flex-col">
-                  {/* Gradient header */}
-                  <div
-                    className={`h-48 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}
-                  >
-                    {/* Pattern overlay */}
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 50%, white 1px, transparent 1px)",
-                        backgroundSize: "40px 40px",
-                      }}
+                  {/* Image header */}
+                  <div className="h-48 relative overflow-hidden group-hover:shadow-inner transition-all duration-500">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.div
-                        initial={{ rotate: 0 }}
-                        whileHover={{ rotate: 5, scale: 1.1 }}
-                        className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center"
-                      >
-                        <span className="text-4xl">
-                          {project.category === "Data" ? "📊" : "🚀"}
-                        </span>
-                      </motion.div>
-                    </div>
+                    {/* Overlay gradient for readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-dark-900/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
 
                     {/* Category badge */}
-                    <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-white/20 backdrop-blur-sm text-white text-xs font-semibold">
+                    <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg bg-dark-900/60 backdrop-blur-md text-white text-xs font-semibold border border-white/10 shadow-lg">
                       {project.category}
                     </div>
                   </div>
@@ -107,25 +98,29 @@ export default function Projects() {
                     </div>
 
                     {/* Links */}
-                    <div className="flex items-center gap-3 pt-4 border-t border-dark-200/50 dark:border-dark-700/50">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg glass text-sm font-medium text-dark-600 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400 transition-all duration-300 hover:scale-105"
-                      >
-                        <FaGithub className="w-4 h-4" />
-                        Code
-                      </a>
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300 hover:scale-105"
-                      >
-                        <FaExternalLinkAlt className="w-3 h-3" />
-                        Live Demo
-                      </a>
+                    <div className="flex items-center gap-3 pt-4 border-t border-dark-200/50 dark:border-dark-700/50 mt-auto">
+                      {project.github !== "#" && (
+                        <a
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg glass text-sm font-medium text-dark-600 dark:text-dark-300 hover:text-primary-500 dark:hover:text-primary-400 transition-all duration-300 hover:scale-105"
+                        >
+                          <FaGithub className="w-4 h-4" />
+                          Code
+                        </a>
+                      )}
+                      {project.live !== "#" && (
+                        <a
+                          href={project.live}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-primary-500/25 transition-all duration-300 hover:scale-105"
+                        >
+                          <FaExternalLinkAlt className="w-3 h-3" />
+                          Live Demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -133,6 +128,22 @@ export default function Projects() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Show More Button */}
+        {filtered.length > 4 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className="px-6 py-3 rounded-xl bg-dark-100 dark:bg-dark-800 text-dark-800 dark:text-white font-medium hover:bg-primary-500 hover:text-white dark:hover:bg-primary-500 transition-colors shadow-sm active:scale-95"
+            >
+              {showAll ? "Show Less" : "Show More Projects"}
+            </button>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -50,8 +50,8 @@ export default function Analytics() {
       <div className="absolute inset-0 mesh-bg" />
       <div className="container-custom relative z-10">
         <SectionHeading
-          title="Data Analytics Showcase"
-          subtitle="Insights & Dashboards"
+          title="Skill & Performance Analytics"
+          subtitle="Proficiency & Insights"
         />
 
         {/* Dashboard-style grid */}
@@ -70,10 +70,10 @@ export default function Analytics() {
               </div>
               <div>
                 <h3 className="font-heading font-bold text-dark-900 dark:text-white">
-                  Analytics Skill Proficiency
+                  Overall Skill Proficiency
                 </h3>
                 <p className="text-xs text-dark-400 dark:text-dark-500">
-                  Self-assessed proficiency levels
+                  Self-assessed full-stack & analytics proficiency
                 </p>
               </div>
             </div>

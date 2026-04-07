@@ -6,13 +6,14 @@ import { HiMenu, HiX } from "react-icons/hi";
 import { BsSunFill, BsMoonStarsFill } from "react-icons/bs";
 import { useTheme } from "next-themes";
 import { NAV_LINKS } from "@/data/constants";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -23,13 +24,11 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
-      // Scroll progress
       const totalHeight =
         document.documentElement.scrollHeight - window.innerHeight;
       const progress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(progress);
 
-      // Active section detection
       const sections = NAV_LINKS.map((link) => link.href.replace("#", ""));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -44,8 +43,10 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const isDark = resolvedTheme === "dark";
+
   const toggleTheme = () => {
-    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+    setTheme(isDark ? "light" : "dark");
   };
 
   return (
@@ -68,14 +69,18 @@ export default function Navbar() {
             {/* Logo */}
             <motion.a
               href="#home"
-              className="relative group"
+              className="relative group flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <span className="text-2xl font-heading font-bold gradient-text">
-                AK
-              </span>
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent-500 group-hover:w-full transition-all duration-300" />
+              <Image
+                src="/images/logo.png"
+                alt="Mohamed Akees Logo"
+                width={80}
+                height={80}
+                className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                priority
+              />
             </motion.a>
 
             {/* Desktop Links */}
@@ -92,13 +97,10 @@ export default function Navbar() {
                 >
                   {activeSection === link.href.replace("#", "") && (
                     <motion.div
-                      layoutId="navIndicator"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.15 }}
                       className="absolute inset-0 bg-primary-500/10 dark:bg-primary-500/15 rounded-lg"
-                      transition={{
-                        type: "spring",
-                        bounce: 0.2,
-                        duration: 0.6,
-                      }}
                     />
                   )}
                   <span className="relative">{link.label}</span>
@@ -107,20 +109,42 @@ export default function Navbar() {
             </div>
 
             {/* Right side */}
-            <div className="flex items-center gap-3">
-              {/* Theme toggle */}
+            <div className="flex items-center gap-2">
+              {/* Theme Toggle - Smoother Telegram style */}
               {mounted && (
                 <motion.button
                   onClick={toggleTheme}
-                  className="p-2.5 rounded-xl glass hover:scale-110 transition-all duration-300"
-                  whileTap={{ scale: 0.9, rotate: 180 }}
+                  className="relative p-2 rounded-xl text-dark-600 dark:text-yellow-400 hover:bg-dark-100 dark:hover:bg-dark-800 transition-colors focus:outline-none"
+                  whileTap={{ scale: 0.9 }}
                   aria-label="Toggle theme"
                 >
-                  {resolvedTheme === "dark" ? (
-                    <BsSunFill className="w-4 h-4 text-yellow-400" />
-                  ) : (
-                    <BsMoonStarsFill className="w-4 h-4 text-primary-600" />
-                  )}
+                  <div className="relative w-6 h-6 flex items-center justify-center overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      {isDark ? (
+                        <motion.div
+                          key="moon"
+                          initial={{ scale: 0.5, rotate: -90, opacity: 0 }}
+                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                          exit={{ scale: 0.5, rotate: 90, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute inset-0 flex items-center justify-center"
+                        >
+                          <BsMoonStarsFill className="w-5 h-5 text-yellow-400 drop-shadow-sm" />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="sun"
+                          initial={{ scale: 0.5, rotate: 90, opacity: 0 }}
+                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                          exit={{ scale: 0.5, rotate: -90, opacity: 0 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute inset-0 flex items-center justify-center"
+                        >
+                          <BsSunFill className="w-5 h-5 text-orange-400 drop-shadow-sm" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.button>
               )}
 

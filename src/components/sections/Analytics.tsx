@@ -62,7 +62,7 @@ export default function Analytics() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2 glass rounded-2xl p-6"
+            className="lg:col-span-2 glass rounded-2xl p-6 overflow-hidden w-full max-w-full"
           >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-xl bg-primary-500/10 flex items-center justify-center">
@@ -197,7 +197,7 @@ export default function Analytics() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="glass rounded-2xl p-6 mb-12"
+          className="glass rounded-2xl p-6 mb-12 overflow-hidden w-full max-w-full"
         >
           <div className="flex items-center gap-3 mb-6">
             <div className="w-10 h-10 rounded-xl bg-accent-500/10 flex items-center justify-center">

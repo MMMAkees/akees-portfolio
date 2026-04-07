@@ -29,6 +29,7 @@ import {
   SiFirebase,
   SiNetlify,
   SiVercel,
+  SiNextdotjs,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 import React from "react";
@@ -40,6 +41,18 @@ const LaragonCustomIcon = ({ className, style }: any) => {
     className: className,
     style: { ...style, objectFit: "contain" }
   });
+};
+
+const VercelCustomIcon = ({ className, style }: any) => {
+  return React.createElement(React.Fragment, null,
+    React.createElement(SiVercel, { className: `dark:hidden ${className || ""}`, style }),
+    React.createElement("img", {
+      src: "/images/vercel.png",
+      alt: "Vercel",
+      className: `hidden dark:inline-block ${className || ""}`,
+      style: { ...style, objectFit: "contain" }
+    })
+  );
 };
 
 import { TbBrandCSharp } from "react-icons/tb";
@@ -121,6 +134,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
       { name: "React.js", icon: FaReact, color: "#61DAFB" },
+      { name: "Next.js", icon: SiNextdotjs as IconType, color: "#000000" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
     ],
   },
@@ -157,7 +171,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "Figma", icon: FaFigma, color: "#F24E1E" },
       { name: "Laragon", icon: LaragonCustomIcon as IconType, color: "#00B4E6" },
       { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
-      { name: "Vercel", icon: SiVercel, color: "#000000" },
+      { name: "Vercel", icon: VercelCustomIcon as IconType, color: "#000000" },
     ],
   },
   {

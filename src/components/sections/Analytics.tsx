@@ -77,52 +77,57 @@ export default function Analytics() {
                 </p>
               </div>
             </div>
-            <ResponsiveContainer width="100%" height={260}>
-              <BarChart data={ANALYTICS_DATA.skillDistribution} barSize={40}>
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  stroke="rgba(148, 163, 184, 0.15)"
-                />
-                <XAxis
-                  dataKey="name"
-                  tick={{ fontSize: 12, fill: "#94a3b8" }}
-                  axisLine={false}
-                  tickLine={false}
-                />
-                <YAxis
-                  tick={{ fontSize: 12, fill: "#94a3b8" }}
-                  axisLine={false}
-                  tickLine={false}
-                  domain={[0, 100]}
-                />
-                <Tooltip
-                  contentStyle={{
-                    background: "rgba(15, 23, 42, 0.9)",
-                    border: "1px solid rgba(99, 102, 241, 0.2)",
-                    borderRadius: "12px",
-                    color: "#e2e8f0",
-                    fontSize: "13px",
-                  }}
-                />
-                <Bar
-                  dataKey="value"
-                  radius={[8, 8, 0, 0]}
-                  fill="url(#barGradient)"
-                />
-                <defs>
-                  <linearGradient
-                    id="barGradient"
-                    x1="0"
-                    y1="0"
-                    x2="0"
-                    y2="1"
-                  >
-                    <stop offset="0%" stopColor="#6366f1" />
-                    <stop offset="100%" stopColor="#8b5cf6" />
-                  </linearGradient>
-                </defs>
-              </BarChart>
-            </ResponsiveContainer>
+            <div className="-mx-2 px-2 overflow-x-auto custom-scrollbar pb-2">
+              <div className="min-w-[600px]">
+                <ResponsiveContainer width="100%" height={260}>
+                  <BarChart data={ANALYTICS_DATA.skillDistribution} barSize={32}>
+                    <CartesianGrid
+                      strokeDasharray="3 3"
+                      stroke="rgba(148, 163, 184, 0.15)"
+                    />
+                    <XAxis
+                      dataKey="name"
+                      tick={{ fontSize: 11, fill: "#94a3b8" }}
+                      axisLine={false}
+                      tickLine={false}
+                      interval={0}
+                    />
+                    <YAxis
+                      tick={{ fontSize: 12, fill: "#94a3b8" }}
+                      axisLine={false}
+                      tickLine={false}
+                      domain={[0, 100]}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: "rgba(15, 23, 42, 0.9)",
+                        border: "1px solid rgba(99, 102, 241, 0.2)",
+                        borderRadius: "12px",
+                        color: "#e2e8f0",
+                        fontSize: "13px",
+                      }}
+                    />
+                    <Bar
+                      dataKey="value"
+                      radius={[8, 8, 0, 0]}
+                      fill="url(#barGradient)"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="barGradient"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="1"
+                      >
+                        <stop offset="0%" stopColor="#6366f1" />
+                        <stop offset="100%" stopColor="#8b5cf6" />
+                      </linearGradient>
+                    </defs>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
           </motion.div>
 
           {/* Stats cards */}
@@ -169,12 +174,12 @@ export default function Analytics() {
                 className="glass rounded-xl p-4 flex items-center gap-4"
               >
                 <div
-                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg`}
+                  className={`w-12 h-12 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-lg min-w-[3rem]`}
                 >
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-2xl font-heading font-bold text-dark-900 dark:text-white">
+                  <p className="text-2xl font-heading font-bold text-dark-900 dark:text-white leading-none mb-1">
                     {stat.value}
                   </p>
                   <p className="text-xs text-dark-400 dark:text-dark-500">
@@ -207,60 +212,65 @@ export default function Analytics() {
               </p>
             </div>
           </div>
-          <ResponsiveContainer width="100%" height={240}>
-            <AreaChart data={ANALYTICS_DATA.monthlyProgress}>
-              <CartesianGrid
-                strokeDasharray="3 3"
-                stroke="rgba(148, 163, 184, 0.15)"
-              />
-              <XAxis
-                dataKey="month"
-                tick={{ fontSize: 12, fill: "#94a3b8" }}
-                axisLine={false}
-                tickLine={false}
-              />
-              <YAxis
-                tick={{ fontSize: 12, fill: "#94a3b8" }}
-                axisLine={false}
-                tickLine={false}
-              />
-              <Tooltip
-                contentStyle={{
-                  background: "rgba(15, 23, 42, 0.9)",
-                  border: "1px solid rgba(99, 102, 241, 0.2)",
-                  borderRadius: "12px",
-                  color: "#e2e8f0",
-                  fontSize: "13px",
-                }}
-              />
-              <defs>
-                <linearGradient id="areaGradient1" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#6366f1" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
-                </linearGradient>
-                <linearGradient id="areaGradient2" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <Area
-                type="monotone"
-                dataKey="projects"
-                stroke="#6366f1"
-                strokeWidth={2}
-                fill="url(#areaGradient1)"
-                name="Projects"
-              />
-              <Area
-                type="monotone"
-                dataKey="insights"
-                stroke="#8b5cf6"
-                strokeWidth={2}
-                fill="url(#areaGradient2)"
-                name="Insights"
-              />
-            </AreaChart>
-          </ResponsiveContainer>
+          
+          <div className="-mx-2 px-2 overflow-x-auto custom-scrollbar pb-2">
+            <div className="min-w-[500px]">
+              <ResponsiveContainer width="100%" height={240}>
+                <AreaChart data={ANALYTICS_DATA.monthlyProgress}>
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    stroke="rgba(148, 163, 184, 0.15)"
+                  />
+                  <XAxis
+                    dataKey="month"
+                    tick={{ fontSize: 12, fill: "#94a3b8" }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis
+                    tick={{ fontSize: 12, fill: "#94a3b8" }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <Tooltip
+                    contentStyle={{
+                      background: "rgba(15, 23, 42, 0.9)",
+                      border: "1px solid rgba(99, 102, 241, 0.2)",
+                      borderRadius: "12px",
+                      color: "#e2e8f0",
+                      fontSize: "13px",
+                    }}
+                  />
+                  <defs>
+                    <linearGradient id="areaGradient1" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#6366f1" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#6366f1" stopOpacity={0} />
+                    </linearGradient>
+                    <linearGradient id="areaGradient2" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <Area
+                    type="monotone"
+                    dataKey="projects"
+                    stroke="#6366f1"
+                    strokeWidth={2}
+                    fill="url(#areaGradient1)"
+                    name="Projects"
+                  />
+                  <Area
+                    type="monotone"
+                    dataKey="insights"
+                    stroke="#8b5cf6"
+                    strokeWidth={2}
+                    fill="url(#areaGradient2)"
+                    name="Insights"
+                  />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
         </motion.div>
 
         {/* Analytics tools */}

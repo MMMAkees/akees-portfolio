@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
+import AkeeBot from "@/components/ui/AkeeBot";
 
 export const metadata: Metadata = {
   title: "Mohamed Akees | Full-Stack Developer & Data Analytics Enthusiast",
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body className="font-sans">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
+          <AkeeBot />
         </ThemeProvider>
       </body>
     </html>

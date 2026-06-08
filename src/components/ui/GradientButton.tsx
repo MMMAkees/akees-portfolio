@@ -10,6 +10,7 @@ interface GradientButtonProps {
   onClick?: () => void;
   className?: string;
   icon?: ReactNode;
+  download?: string;
 }
 
 export default function GradientButton({
@@ -19,6 +20,7 @@ export default function GradientButton({
   onClick,
   className = "",
   icon,
+  download,
 }: GradientButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden group";
@@ -49,6 +51,7 @@ export default function GradientButton({
     return (
       <motion.a
         href={href}
+        download={download}
         className={classes}
         whileTap={{ scale: 0.95 }}
       >

@@ -7,6 +7,7 @@ import GradientButton from "@/components/ui/GradientButton";
 import { PERSONAL } from "@/data/constants";
 import { HiArrowDown, HiEye } from "react-icons/hi";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { HiOutlineDocumentDownload } from "react-icons/hi";
 
 export default function Hero() {
   return (
@@ -114,6 +115,14 @@ export default function Hero() {
               </GradientButton>
               <GradientButton href="#contact" variant="outline" icon={<HiArrowDown className="w-4 h-4" />}>
                 Contact Me
+              </GradientButton>
+              <GradientButton 
+                href="/MMMAkeesCV.pdf" 
+                download="MMMAkeesCV.pdf"
+                variant="outline" 
+                icon={<HiOutlineDocumentDownload className="w-4 h-4" />}
+              >
+                Download CV
               </GradientButton>
             </motion.div>
 

@@ -192,17 +192,29 @@ export const SKILLS: SkillCategory[] = [
 // ──────────────────────────────────────────────
 export const EXPERIENCE = [
   {
-    role: "Junior Software Engineer Intern",
-    company: "Marazin Academy",
-    period: "2026 - Present",
+    role: "Web Application Developer",
+    company: "Binosoft",
+    period: "Nov 2024 - Jun 2026",
+    type: "Full-time",
+    responsibilities: [
+      "Developed and maintained responsive web applications using React.js and modern JavaScript",
+      "Designed and integrated clean, user-friendly frontend interfaces with optimization for various devices",
+      "Collaborated with cross-functional teams to define, design, and ship new features",
+      "Optimized application performance for maximum speed, scalability, and seamless user experiences",
+      "Wrote clean, modular, and maintainable code adhering to industry best practices",
+      "Conducted thorough testing and debugging to identify and resolve issues promptly",
+    ],
+  },
+  {
+    role: "Web Application Developer",
+    company: "Binosoft",
+    period: "Jun 2024 - Nov 2024",
     type: "Internship",
     responsibilities: [
-      "Developing responsive web applications using React.js and Tailwind CSS",
-      "Building RESTful APIs with Node.js and Express.js",
-      "Collaborating with senior developers on full-stack projects",
-      "Implementing database solutions using MongoDB and SQL",
-      "Participating in agile development workflows and code reviews",
-      "Debugging and testing applications for optimal performance",
+      "Assisted in the frontend development of web projects using React.js, HTML5, and CSS3",
+      "Implemented responsive web designs under the guidance of senior developers",
+      "Helped identify and fix frontend bugs and issues to ensure a smooth user experience",
+      "Learned modern software development methodologies, workflows, and version control (Git/GitHub)",
     ],
   },
 ];
@@ -225,6 +237,23 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+  {
+    title: "MCM & Sons Jewellers",
+    description:
+      "A full-stack e-commerce platform built from scratch for a real jewellery business, designed around real business requirements focusing on performance, security, and user experience.",
+    features: [
+      "Dynamic admin-controlled homepage banners & real-time gold rate ticker",
+      "Multi-image product gallery, synchronized shopping cart & wishlist across devices",
+      "Comprehensive admin dashboard for product, category, order, and customer management",
+      "Secure checkout with distance-based delivery pricing and Google OAuth authentication"
+    ],
+    tech: ["React", "Vite", "Tailwind CSS", "Supabase", "Zustand", "Framer Motion"],
+    category: "Web",
+    github: "https://github.com/MMMAkees/mcm-sons-jewellers",
+    live: "https://mcm-sons-jewellers.vercel.app/",
+    gradient: "from-yellow-600 to-amber-700",
+    image: "/images/projects/mcm-jewellers.png",
+  },
   {
     title: "Learn AI Agents",
     description:

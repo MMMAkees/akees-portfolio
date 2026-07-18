@@ -44,7 +44,7 @@ const contactInfo = [
   {
     icon: HiLocationMarker,
     label: "Location",
-    value: "Ampara, Sri Lanka",
+    value: PERSONAL.location,
     href: "#",
     color: "from-primary-500 to-accent-500",
   },

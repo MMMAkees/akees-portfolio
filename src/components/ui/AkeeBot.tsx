@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiChat, HiX, HiPaperAirplane } from "react-icons/hi";
 import { FaRobot } from "react-icons/fa";
+import { PERSONAL } from "@/data/constants";
 
 type Message = {
   id: string;
@@ -67,8 +68,8 @@ export default function AkeeBot() {
           "He gained enterprise experience at E-Space Solutions building scalable software for 10 months as a Software Engineer Intern."
         ],
         contact: [
-          "You can drop him a direct email at **akeesak15@gmail.com**, or reach out via his LinkedIn! You can also find his number in the Contact section.",
-          "He is currently **Available for opportunities**! Feel free to email him at akeesak15@gmail.com."
+          `You can drop him a direct email at **${PERSONAL.email}**, or reach out via his LinkedIn! You can also find his number in the Contact section.`,
+          `He is currently **Available for opportunities**! Feel free to email him at ${PERSONAL.email}.`
         ],
         projects: [
           "Akees has built several major apps, including **FoodieHub**, **E-Space Solutions Management System**, and **Velvet Vogue**. You can interact with the live demos in the Projects section!",

@@ -16,6 +16,8 @@ export const metadata: Metadata = {
     "Node.js",
     "Portfolio",
     "Sri Lanka",
+    "Qatar",
+    "Doha",
   ],
   authors: [{ name: "Mohamed Akees" }],
   openGraph: {

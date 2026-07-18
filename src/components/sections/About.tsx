@@ -51,7 +51,7 @@ export default function About() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-500/10 text-primary-600 dark:text-primary-400 text-sm font-medium border border-primary-500/20">
-                  <HiLocationMarker className="w-3.5 h-3.5" /> Sri Lanka
+                  <HiLocationMarker className="w-3.5 h-3.5" /> {PERSONAL.location}
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-500/10 text-green-600 dark:text-green-400 text-sm font-medium border border-green-500/20">
                   <HiSparkles className="w-3.5 h-3.5" /> Open to Work

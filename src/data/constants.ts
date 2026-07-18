@@ -55,7 +55,7 @@ const VercelCustomIcon = ({ className, style }: any) => {
   );
 };
 
-import { TbBrandCSharp } from "react-icons/tb";
+import { TbBrandCSharp, TbSeo } from "react-icons/tb";
 
 // ──────────────────────────────────────────────
 // Navigation
@@ -79,9 +79,9 @@ export const PERSONAL = {
   name: "Mohamed Akees",
   role: "Full-Stack Developer",
   tagline: "Building Modern Web Apps & Turning Data into Insights",
-  location: "Ampara District, Eastern Province, Sri Lanka",
-  email: "akeesak15@gmail.com",
-  phone: "+94 771832725",
+  location: "Doha Qatar",
+  email: "toakees@gmail.com",
+  phone: "+974 3128 4744",
   linkedin: "https://linkedin.com/in/mohamed-akees",
   github: "https://github.com/MMMAkees",
   dob: "15 May 2004",
@@ -136,6 +136,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "React.js", icon: FaReact, color: "#61DAFB" },
       { name: "Next.js", icon: SiNextdotjs as IconType, color: "#000000" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "SEO Optimization", icon: TbSeo, color: "#4F46E5" },
     ],
   },
   {

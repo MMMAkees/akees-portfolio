@@ -18,6 +18,10 @@ import {
   FaSync,
   FaBrain,
   FaServer,
+  FaWordpress,
+  FaShieldAlt,
+  FaUniversalAccess,
+  FaGlobe,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -30,6 +34,9 @@ import {
   SiNetlify,
   SiVercel,
   SiNextdotjs,
+  SiWebflow,
+  SiPostgresql,
+  SiMysql,
 } from "react-icons/si";
 import { IconType } from "react-icons";
 import React from "react";
@@ -55,7 +62,7 @@ const VercelCustomIcon = ({ className, style }: any) => {
   );
 };
 
-import { TbBrandCSharp, TbSeo } from "react-icons/tb";
+import { TbBrandCSharp, TbSeo, TbApi } from "react-icons/tb";
 
 // ──────────────────────────────────────────────
 // Navigation
@@ -87,7 +94,11 @@ export const PERSONAL = {
   dob: "15 May 2004",
   nationality: "Sri Lankan",
   aboutSummary:
-    "Motivated Full-Stack Developer with a passion for building modern web applications using the MERN stack and uncovering meaningful insights through Data Analytics. I combine clean code with creative problem-solving to deliver impactful solutions.",
+    `Web Application Developer with experience in building responsive, user-friendly, and scalable web applications. Skilled in React.js, JavaScript, MySQL, HTML5, CSS, Bootstrap, Tailwind CSS, REST APIs, Git, and GitHub. Familiar with WordPress, Webflow, PostgreSQL, web hosting, domain management, web application security, SEO, and accessibility best practices.
+
+I enjoy developing clean and efficient web solutions while focusing on performance, usability, and maintainable code. Through professional experience and personal projects, I have strengthened my understanding of frontend development, backend integration, database management, and version control.
+
+I am committed to continuously learning new technologies, collaborating with teams, and contributing to the development of reliable and impactful web applications. I'm always open to connecting with developers, recruiters, and organizations to explore new opportunities and challenges in software development.`,
   aboutHighlights: [
     {
       title: "Web Development",
@@ -137,6 +148,7 @@ export const SKILLS: SkillCategory[] = [
       { name: "Next.js", icon: SiNextdotjs as IconType, color: "#000000" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
       { name: "SEO Optimization", icon: TbSeo, color: "#4F46E5" },
+      { name: "Web Accessibility", icon: FaUniversalAccess, color: "#005A9C" },
     ],
   },
   {
@@ -147,12 +159,15 @@ export const SKILLS: SkillCategory[] = [
       { name: "PHP", icon: SiPhp, color: "#777BB4" },
       { name: "C# / .NET", icon: TbBrandCSharp, color: "#239120" },
       { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+      { name: "REST APIs", icon: TbApi, color: "#FF6C37" },
     ],
   },
   {
     category: "Database",
     skills: [
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
       { name: "SQL", icon: FaDatabase, color: "#4479A1" },
     ],
   },
@@ -173,6 +188,10 @@ export const SKILLS: SkillCategory[] = [
       { name: "Laragon", icon: LaragonCustomIcon as IconType, color: "#00B4E6" },
       { name: "Netlify", icon: SiNetlify, color: "#00C7B7" },
       { name: "Vercel", icon: VercelCustomIcon as IconType, color: "#000000" },
+      { name: "WordPress", icon: FaWordpress, color: "#21759B" },
+      { name: "Webflow", icon: SiWebflow, color: "#4353FF" },
+      { name: "Hosting & Domains", icon: FaGlobe, color: "#0EA5E9" },
+      { name: "Web Security", icon: FaShieldAlt, color: "#EF4444" },
     ],
   },
   {

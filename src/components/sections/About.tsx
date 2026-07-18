@@ -46,7 +46,7 @@ export default function About() {
               <h3 className="text-xl font-heading font-bold text-dark-900 dark:text-white mb-4">
                 A Passionate Developer
               </h3>
-              <p className="text-dark-500 dark:text-dark-400 leading-relaxed mb-6">
+              <p className="text-dark-500 dark:text-dark-400 leading-relaxed mb-6 whitespace-pre-line">
                 {PERSONAL.aboutSummary}
               </p>
               <div className="flex flex-wrap gap-3">

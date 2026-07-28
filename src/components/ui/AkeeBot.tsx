@@ -76,8 +76,8 @@ export default function AkeeBot() {
           "Check out the Projects section! He's built full-stack apps ranging from eCommerce (Velvet Vogue) to AI Agent learning platforms."
         ],
         education: [
-          "He is currently pursuing a **Higher National Diploma (HND) in Software Engineering** at ESOFT Metro Campus.",
-          "He completed his G.C.E. Advanced Level (ICT) at Zahira College, and holds several IT and Web Design certificates from BCAS and University of Moratuwa."
+          "He is pursuing a **Bachelor of Engineering, Computer Software Engineering** at London Metropolitan University (Jul 2026 – Aug 2027).",
+          "He holds an HND in Software Engineering from ESOFT Metro Campus and is pursuing a BEng in Computer Software Engineering at London Metropolitan University."
         ],
         analytics: [
           "Aside from web dev, Akees is very passionate about **Data Analytics**! He's proficient in Power BI, SQL, and Excel for deriving deep data insights."

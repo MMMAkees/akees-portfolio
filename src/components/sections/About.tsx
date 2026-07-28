@@ -57,7 +57,7 @@ export default function About() {
                   <HiSparkles className="w-3.5 h-3.5" /> Open to Work
                 </span>
                 <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-accent-500/10 text-accent-600 dark:text-accent-400 text-sm font-medium border border-accent-500/20">
-                  <HiAcademicCap className="w-3.5 h-3.5" /> HND in SE
+                  <HiAcademicCap className="w-3.5 h-3.5" /> BEng in SE
                 </span>
               </div>
             </div>

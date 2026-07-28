@@ -383,6 +383,12 @@ export const PROJECTS: Project[] = [
 // ──────────────────────────────────────────────
 export const EDUCATION = [
   {
+    degree: "Bachelor of Engineering, Computer Software Engineering",
+    institution: "London Metropolitan University",
+    period: "Jul 2026 – Aug 2027",
+    icon: "graduation",
+  },
+  {
     degree: "Higher National Diploma (HND) in Software Engineering",
     institution: "ESOFT Metro Campus (BTEC Pearson)",
     period: "Feb 2024 – Nov 2025",

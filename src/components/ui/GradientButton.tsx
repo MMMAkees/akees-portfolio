@@ -11,6 +11,8 @@ interface GradientButtonProps {
   className?: string;
   icon?: ReactNode;
   download?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 }
 
 export default function GradientButton({
@@ -21,6 +23,8 @@ export default function GradientButton({
   className = "",
   icon,
   download,
+  type = "button",
+  disabled = false,
 }: GradientButtonProps) {
   const baseClasses =
     "inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 relative overflow-hidden group";
@@ -62,9 +66,11 @@ export default function GradientButton({
 
   return (
     <motion.button
-      className={classes}
+      type={type}
+      className={`${classes} ${disabled ? "opacity-60 cursor-not-allowed" : ""}`}
       onClick={onClick}
-      whileTap={{ scale: 0.95 }}
+      whileTap={disabled ? {} : { scale: 0.95 }}
+      disabled={disabled}
     >
       {content}
     </motion.button>

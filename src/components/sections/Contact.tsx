@@ -17,8 +17,6 @@ import {
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 import { ImSpinner8 } from "react-icons/im";
 
-const WEB3FORMS_ACCESS_KEY = "5ca2df2b-7ffd-40bb-9f2b-197e5429ea51";
-
 const contactInfo = [
   {
     icon: HiMail,
@@ -168,19 +166,29 @@ export default function Contact() {
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
-    formData.append("access_key", WEB3FORMS_ACCESS_KEY);
-    formData.append("subject", `Portfolio Contact from ${formData.get("name")}`);
-    formData.append("from_name", "Akees Portfolio");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        `https://formsubmit.co/ajax/${PERSONAL.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.get("name"),
+            email: formData.get("email"),
+            message: formData.get("message"),
+            _subject: `Portfolio Contact from ${formData.get("name")}`,
+            _template: "table",
+          }),
+        }
+      );
 
       const data = await response.json();
 
-      if (data.success) {
+      if (data.success === "true" || data.success === true || response.ok) {
         showPopup(
           "success",
           "Thank you! Your message has been delivered successfully. I'll get back to you soon! 🚀"
@@ -285,14 +293,6 @@ export default function Contact() {
                 className="glass rounded-2xl p-8"
                 onSubmit={handleSubmit}
               >
-                {/* Honeypot spam protection */}
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  className="hidden"
-                  style={{ display: "none" }}
-                />
-
                 <div className="space-y-5">
                   <div>
                     <label

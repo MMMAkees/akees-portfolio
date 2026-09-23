@@ -275,6 +275,23 @@ export const PROJECTS: Project[] = [
     image: "/images/projects/mcm-jewellers.png",
   },
   {
+    title: "24/7 Fitness",
+    description:
+      "A modern, high-performance fitness gym landing page with premium dark UI design, smooth animations, and fully responsive layouts — built to showcase a fitness brand experience.",
+    features: [
+      "Hero section with animated stats (15K+ members, 50+ trainers)",
+      "Programs showcase, trainer profiles & pricing plans",
+      "Smooth scroll animations & interactive hover effects",
+      "Fully responsive design with premium dark theme"
+    ],
+    tech: ["React", "Vite", "Tailwind CSS", "JavaScript", "Vercel"],
+    category: "Web",
+    github: "https://github.com/MMMAkees/24-7_Fitness",
+    live: "https://24-7-fitness-nu.vercel.app/",
+    gradient: "from-red-500 to-rose-600",
+    image: "/images/projects/247-fitness.png",
+  },
+  {
     title: "Learn AI Agents",
     description:
       "A modern educational website designed to help developers understand and start building Autonomous AI Agents. It simplifies complex topics and provides a structured learning path.",
@@ -439,6 +456,9 @@ export const ANALYTICS_DATA = {
     { month: "Apr", projects: 5, insights: 15 },
     { month: "May", projects: 6, insights: 18 },
     { month: "Jun", projects: 8, insights: 22 },
+    { month: "Jul", projects: 9, insights: 25 },
+    { month: "Aug", projects: 10, insights: 28 },
+    { month: "Sep", projects: 11, insights: 32 },
   ],
 };
 
